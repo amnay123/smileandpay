@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime"
+	version="2.0">
+	<endpoint name="IMerchantService"
+		implementation="merchant.service.MerchantServiceImpl"
+		url-pattern="/services/MerchantService" />
+	<endpoint name="IProductService"
+		implementation="product.service.ProductServiceImpl"
+		url-pattern="/services/ProductService" />
+	<endpoint name="IAssignmentService"
+		implementation="assignment.service.AssignmentServiceImpl"
+		url-pattern="/services/AssignmentService" />
+</endpoints>

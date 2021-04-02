@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://smileandpay.com/entities/assignment" xmlns:tns="http://smileandpay.com/entities/assignment"
+	elementFormDefault="qualified"
+	xmlns:merchant="http://smileandpay.com/entities/merchant"
+	xmlns:product="http://smileandpay.com/entities/product">
+
+
+		<xsd:import namespace="http://smileandpay.com/entities/merchant"
+				schemaLocation="../entities/merchant.xsd" />
+		<xsd:import namespace="http://smileandpay.com/entities/product"
+				schemaLocation="../entities/product.xsd" />
+		
+
+	<!-- ADD OPERATION -->
+	<xsd:element name="AddAssignmentRequestType">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="assignment" type="tns:Assignment" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="AddAssignmentResponseType">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="responseMessage" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+      
+<!-- Merchant Type -->
+    <xsd:complexType name="Assignment">
+        <xsd:sequence>
+            <xsd:element name="assignmentDate" type="xsd:dateTime"/>
+            <xsd:element name="merchant">
+            <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="merchant" type="merchant:Merchant"/>
+			</xsd:sequence>
+		</xsd:complexType>
+		</xsd:element>
+		<xsd:element name="product">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="product" type="product:Product"/>
+			</xsd:sequence>
+		</xsd:complexType>
+		</xsd:element>
+            
+            
+        </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>

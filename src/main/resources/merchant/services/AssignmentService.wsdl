@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="http://smileandpay.com/services/AssignmentService/"
+	xmlns:tns="http://smileandpay.com/services/AssignmentService/"
+	xmlns:product="http://smileandpay.com/entities/assignment" name="AssignmentService">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://smileandpay.com/services/AssignmentService/">
+			<xsd:import namespace="http://smileandpay.com/entities/assignment"
+				schemaLocation="../entities/assignment.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+
+	<wsdl:message name="AddAssignmentRequest">
+		<wsdl:part element="product:AddAssignmentRequestType" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="AddAssignmentResponse">
+		<wsdl:part element="product:AddAssignmentResponseType" name="parameters" />
+	</wsdl:message>
+	
+
+	<wsdl:portType name="IAssignmentService">
+		<wsdl:operation name="addAssignment">
+			<wsdl:input message="tns:AddAssignmentRequest" />
+			<wsdl:output message="tns:AddAssignmentResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="AssignmentServiceSOAPBinding" type="tns:IAssignmentService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="addAssignment">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="AssignmentService">
+		<wsdl:port name="AssignmentServicePort" binding="tns:AssignmentServiceSOAPBinding">
+			<soap:address
+				location="http://localhost:8080/Merchant/services/AssignmentService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

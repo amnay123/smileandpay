@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="http://smileandpay.com/services/MerchantService/"
+	xmlns:tns="http://smileandpay.com/services/MerchantService/"
+	xmlns:merchant="http://smileandpay.com/entities/merchant" name="MerchantService">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://smileandpay.com/services/MerchantService/">
+			<xsd:import namespace="http://smileandpay.com/entities/merchant"
+				schemaLocation="../entities/merchant.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="AddMerchantRequest">
+		<wsdl:part element="merchant:AddMerchantRequestType" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="AddMerchantResponse">
+		<wsdl:part element="merchant:AddMerchantResponseType" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="UpdateMerchantRequest">
+		<wsdl:part element="merchant:UpdateMerchantRequestType" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="UpdateMerchantResponse">
+		<wsdl:part element="merchant:UpdateMerchantResponseType" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="DeleteMerchantRequest">
+		<wsdl:part element="merchant:DeleteMerchantRequestType" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="DeleteMerchantResponse">
+		<wsdl:part element="merchant:DeleteMerchantResponseType" name="parameters" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="IMerchantService">
+		<wsdl:operation name="addMerchant">
+			<wsdl:input message="tns:AddMerchantRequest" />
+			<wsdl:output message="tns:AddMerchantResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="updateMerchant">
+			<wsdl:input message="tns:UpdateMerchantRequest" />
+			<wsdl:output message="tns:UpdateMerchantResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="deleteMerchant">
+			<wsdl:input message="tns:DeleteMerchantRequest" />
+			<wsdl:output message="tns:DeleteMerchantResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="MerchantServiceSOAPBinding" type="tns:IMerchantService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="addMerchant">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="updateMerchant">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="deleteMerchant">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="MerchantService">
+		<wsdl:port name="MerchantServicePort" binding="tns:MerchantServiceSOAPBinding">
+			<soap:address
+				location="http://localhost:8080/Merchant/services/MerchantService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

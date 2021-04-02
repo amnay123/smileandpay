@@ -1,0 +1,30 @@
+
+CREATE DATABASE merchants;
+
+CREATE TABLE merchant(id INT NOT NULL PRIMARY KEY,
+                      create_date TIMESTAMP,
+                      name VARCHAR(128),
+                      lastname VARCHAR(128),
+                      birthdate DATE);
+
+CREATE TABLE product(id INT NOT NULL PRIMARY KEY,
+                      create_date TIMESTAMP,
+                      label VARCHAR(256),
+                      unit_price DECIMAL(10,2),
+                      currency VARCHAR(64),
+                      weight DECIMAL(10,2),
+                      height DECIMAL(10,2));
+
+CREATE TABLE product_merchant_assignment(product_id INT NOT NULL,
+                      merchant_id INT NOT NULL,
+                      assignment_date TIMESTAMP,
+                      PRIMARY KEY (product_id,merchant_id,assignment_date),
+                      FOREIGN KEY(product_id) REFERENCES product(id),
+                      FOREIGN KEY(merchant_id) REFERENCES merchant(id));
+
+CREATE TABLE address(id INT NOT NULL PRIMARY KEY,
+                      number INT,
+                      street VARCHAR(128),
+                      zipcode VARCHAR(64),
+                      merchant_id INT NOT NULL,
+                      FOREIGN KEY(merchant_id) REFERENCES merchant(id));

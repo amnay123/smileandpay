@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="http://smileandpay.com/services/ProductService/"
+	xmlns:tns="http://smileandpay.com/services/ProductService/"
+	xmlns:product="http://smileandpay.com/entities/product" name="ProductService">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://smileandpay.com/services/ProductService/">
+			<xsd:import namespace="http://smileandpay.com/entities/product"
+				schemaLocation="../entities/product.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="AddProductRequest">
+		<wsdl:part element="product:AddProductRequestType" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="AddProductResponse">
+		<wsdl:part element="product:AddProductResponseType" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="UpdateProductRequest">
+		<wsdl:part element="product:UpdateProductRequestType" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="UpdateProductResponse">
+		<wsdl:part element="product:UpdateProductResponseType" name="parameters" />
+	</wsdl:message>
+	
+	<wsdl:message name="DeleteProductRequest">
+		<wsdl:part element="product:DeleteProductRequestType" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="DeleteProductResponse">
+		<wsdl:part element="product:DeleteProductResponseType" name="parameters" />
+	</wsdl:message>
+
+
+	<wsdl:portType name="IProductService">
+		<wsdl:operation name="addProduct">
+			<wsdl:input message="tns:AddProductRequest" />
+			<wsdl:output message="tns:AddProductResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="updateProduct">
+			<wsdl:input message="tns:UpdateProductRequest" />
+			<wsdl:output message="tns:UpdateProductResponse" />
+		</wsdl:operation>
+		
+		<wsdl:operation name="deleteProduct">
+			<wsdl:input message="tns:DeleteProductRequest" />
+			<wsdl:output message="tns:DeleteProductResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="ProductServiceSOAPBinding" type="tns:IProductService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="addProduct">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="updateProduct">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="deleteProduct">
+			<soap:operation soapAction="" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="ProductService">
+		<wsdl:port name="ProductServicePort" binding="tns:ProductServiceSOAPBinding">
+			<soap:address
+				location="http://localhost:8080/Merchant/services/ProductService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
